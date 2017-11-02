@@ -6,7 +6,7 @@ const tripSchema = new Schema({
 	end: { type: String, required: true},
 	startDate: Date,
 	endDate: Date,
-	currentDate: {type: Date, default: Date.now }
+	currentDate: {type: Date, default: Date.now }s
 
 });
 
