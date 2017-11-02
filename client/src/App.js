@@ -1,17 +1,29 @@
 import React, { Component } from 'react';
-import { Provider } from 'react-redux';
 import './App.css';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Navpills from "./components/Navpills";
+import Home from "./components/pages/Home";
+import Create from "./components/pages/Create"
+
+
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Welcome to React</h1>
+          <h1 className="App-title">Welcome to Day Tripper!</h1>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <Router>
+          <div>
+            <Navpills />
+            <Route exact path="/" component={Home} />
+            <Route exact path="/create" component={Create} />
+          </div>
+
+        </Router>
+
+
       </div>
     );
   }
