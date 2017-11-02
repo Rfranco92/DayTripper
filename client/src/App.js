@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Navpills from "./components/Navpills";
 import Home from "./components/pages/Home";
 import Create from "./components/pages/Create"
+import Travel from "./components/pages/Travel"
+import Details from "./components/pages/Details"
 
 
 
@@ -19,6 +21,8 @@ class App extends Component {
             <Navpills />
             <Route exact path="/" component={Home} />
             <Route exact path="/create" component={Create} />
+            <Route exact path="/travel" component={Travel} />
+            <Route exact path="/details" component={Details} />
           </div>
 
         </Router>
