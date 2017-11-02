@@ -1,4 +1,5 @@
 import React from "react";
+import Submit from "../../components/Submit";
 
 const Travel = () =>
   <div>
@@ -9,6 +10,8 @@ const Travel = () =>
         <input type = "text" name = "start"/>
         <br/>
         <input type = "text" name = "begin"/>
+        <br/>
+        <Submit/>
 
 
       </form>
