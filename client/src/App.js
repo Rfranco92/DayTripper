@@ -21,8 +21,7 @@ class App extends Component {
             <Navpills />
             <Route exact path="/" component={Home} />
             <Route exact path="/create" component={Create} />
-            <Route exact path="/travel" component={Travel} />
-            <Route exact path="/details" component={Details} />
+            <Route path="/travel" component={Travel} />
           </div>
 
         </Router>
