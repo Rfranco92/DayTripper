@@ -1,21 +1,21 @@
 import React from "react";
 import Submit from "../../components/Submit";
+import Details from "./Details";
+import { Link, Route } from "react-router-dom";
+import { Input, TextArea, FormBtn } from "../../components/Form";
 
-const Travel = () =>
+const Travel = props =>
   <div>
-    <h1>There should be forms here</h1>
-    <p>
-      <form>
-        <h1>RENDER ME!!!</h1>
-        <input type = "text" name = "start"/>
-        <br/>
-        <input type = "text" name = "begin"/>
-        <br/>
-        <Submit/>
+    <h1>Starting Location Details</h1>
+      <Input>
+      </Input>
+<Link to={`${props.match.url}/details`} className="btn btn-default">
+  ENHANCE!
+</Link>{" "}
+<Route exact path={`${props.match.url}/details`} component={Details} />
 
 
-      </form>
-    </p>
+
   </div>;
 
 export default Travel;
