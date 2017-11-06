@@ -16,7 +16,6 @@ const strategy = new LocalStrategy(
 			if (!userMatch.checkPassword(password)) {
 				return done(null, false, { message: 'Incorrect password' })
 			}
-			console.log("We Did It!")
 			return done(null, userMatch)
 		})
 	}

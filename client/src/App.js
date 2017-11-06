@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Navpills from "./components/Navpills";
-import Home from "./components/pages/Home";
+import Login from "./components/pages/Login";
 import Create from "./components/pages/Create"
 import Travel from "./components/pages/Travel"
 import Details from "./components/pages/Details"
@@ -19,7 +19,6 @@ class App extends Component {
       user: null
     }
     this._logout = this._logout.bind(this)
-    this._login = this._login.bind(this)
   }
   componentDidMount() {
     axios.get('/auth/user').then(response => {
@@ -48,7 +47,8 @@ class App extends Component {
       if (response.status === 200) {
         this.setState({
           loggedIn: false,
-          user: null
+          user: null,
+          redirectTo: '/',
         })
       }
     })
@@ -58,12 +58,11 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Welcome to Day Tripper!</h1>
+          <h1 className="App-title"><Header user={this.state.user} /></h1>
         </header>
         <Router>
           <div>
             <Navpills  _logout={this._logout} loggedIn={this.state.loggedIn} />
-            <Header user={this.state.user} />       
             <Route exact path="/login" component={Login} />
             <Route exact path="/create" component={Create} />
             <Route path="/travel" component={Travel} />
