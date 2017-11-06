@@ -6,10 +6,72 @@ import Home from "./components/pages/Home";
 import Create from "./components/pages/Create"
 import Travel from "./components/pages/Travel"
 import Details from "./components/pages/Details"
+import Header from "./components/login/header"
+import axios from "axios"
 
 
 
 class App extends Component {
+  constructor() {
+    super()
+    this.state = {
+      loggedIn: false,
+      user: null
+    }
+    this._logout = this._logout.bind(this)
+    this._login = this._login.bind(this)
+  }
+  componentDidMount() {
+    axios.get('/auth/user').then(response => {
+      console.log(response.data)
+      if (!!response.data.user) {
+        console.log('THERE IS A USER')
+        this.setState({
+          loggedIn: true,
+          user: response.data.user
+        })
+      } else {
+        console.log('THERE IS NO USER')
+        this.setState({
+          loggedIn: false,
+          user: null
+        })
+      }
+    })
+  }
+
+  _logout(event) {
+    event.preventDefault()
+    console.log('logging out')
+    axios.post('/auth/logout').then(response => {
+      console.log(response.data)
+      if (response.status === 200) {
+        this.setState({
+          loggedIn: false,
+          user: null
+        })
+      }
+    })
+  }
+
+  _login(username, password) {
+    axios
+      .post('/auth/login', {
+        username,
+        password
+      })
+      .then(response => {
+        console.log(response)
+        if (response.status === 200) {
+          // update the state
+          this.setState({
+            loggedIn: true,
+            user: response.data.user
+          })
+        }
+      })
+  }
+
   render() {
     return (
       <div className="App">
@@ -18,8 +80,9 @@ class App extends Component {
         </header>
         <Router>
           <div>
-            <Navpills />
-            <Route exact path="/" component={Home} />
+            <Navpills  _logout={this._logout} loggedIn={this.state.loggedIn} />
+            <Header user={this.state.user} />       
+            <Route exact path="/login" component={Home} />
             <Route exact path="/create" component={Create} />
             <Route path="/travel" component={Travel} />
           </div>

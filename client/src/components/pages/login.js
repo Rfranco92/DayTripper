@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Route, Link } from 'react-router-dom';
 import LoginForm from '../login/loginForm';
 import SignupForm from '../login/SignUpForm';
-import Header from '../login/header'l
+import Header from '../login/header';
 import Home from "../login/home";
 
 class login extends Component {
@@ -46,24 +46,6 @@ class login extends Component {
 				})
 			}
 		})
-	}
-
-	_login(username, password) {
-		axios
-			.post('/auth/login', {
-				username,
-				password
-			})
-			.then(response => {
-				console.log(response)
-				if (response.status === 200) {
-					// update the state
-					this.setState({
-						loggedIn: true,
-						user: response.data.user
-					})
-				}
-			})
 	}
 }
 
