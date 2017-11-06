@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Route, Link } from 'react-router-dom';
 import LoginForm from '../login/loginForm';
 import SignupForm from '../login/SignUpForm';
-import Header from '../login/header'l
+import Header from '../login/header';
 import Home from "../login/home";
 
 class login extends Component {

@@ -47,6 +47,7 @@ class LoginForm extends Component {
 						loggedIn: true,
 						user: response.data.user
 					})
+					console.log(this);
 				}
 			})
 	}
