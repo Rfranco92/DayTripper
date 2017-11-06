@@ -1,11 +1,6 @@
-<<<<<<< HEAD
-import React from "react";
-import LoginForm from "../Login/loginForm.js"
-=======
 import React, { Component } from "react";
 import LoginForm from "../login/loginForm.js"
 import axios from 'axios'
->>>>>>> ee8b6bc36ae3a06b0d9e3d0ee6cb080c2122367b
 
 
 class Home extends Component  {
@@ -37,24 +32,15 @@ class Home extends Component  {
 	render() {
 		return( 
   <div>
-<<<<<<< HEAD
-    <h1>Please log In</h1>
-=======
     <h1>Please log in using your username and password</h1>
     <p>     
->>>>>>> ee8b6bc36ae3a06b0d9e3d0ee6cb080c2122367b
         <LoginForm 
         _login={this._login}
 		_googleSignin={this._googleSignin}
 		/>
-<<<<<<< HEAD
-  </div>;
-
-=======
     </p>
   </div>
   )
 	}
 }	
->>>>>>> ee8b6bc36ae3a06b0d9e3d0ee6cb080c2122367b
 export default Home;
