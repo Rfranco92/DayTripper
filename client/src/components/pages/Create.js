@@ -1,12 +1,12 @@
 import React from "react";
+import SignupForm from "../login/SignUpForm.js"
 
 const Create = () =>
   <div>
     <h1>Create</h1>
     <p>
-    <h1>
       Render user sign up here
-    </h1>
+      <SignupForm />
     </p>
   </div>;
 
