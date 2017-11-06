@@ -54,24 +54,6 @@ class App extends Component {
     })
   }
 
-  _login(username, password) {
-    axios
-      .post('/auth/login', {
-        username,
-        password
-      })
-      .then(response => {
-        console.log(response)
-        if (response.status === 200) {
-          // update the state
-          this.setState({
-            loggedIn: true,
-            user: response.data.user
-          })
-        }
-      })
-  }
-
   render() {
     return (
       <div className="App">
@@ -82,7 +64,7 @@ class App extends Component {
           <div>
             <Navpills  _logout={this._logout} loggedIn={this.state.loggedIn} />
             <Header user={this.state.user} />       
-            <Route exact path="/login" component={Home} />
+            <Route exact path="/login" component={Login} />
             <Route exact path="/create" component={Create} />
             <Route path="/travel" component={Travel} />
           </div>
