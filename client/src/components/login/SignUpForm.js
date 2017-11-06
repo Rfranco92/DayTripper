@@ -22,7 +22,6 @@ class SignupForm extends Component {
 	handleSubmit(event) {
 		event.preventDefault()
 		// TODO - validate!
-		console.log("Sending stuff");
 		axios
 			.post('/auth/signup', {
 				username: this.state.username,
@@ -33,7 +32,7 @@ class SignupForm extends Component {
 				if (!response.data.errmsg) {
 					console.log('youre good')
 					this.setState({
-						redirectTo: '/login'
+						redirectTo: '/'
 					})
 				} else {
 					console.log('duplicate')
