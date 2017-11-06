@@ -1,27 +1,63 @@
+require('dotenv').config()
+
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const routes = require("./routes");
+const morgan = require('morgan');
+const session = require('express-session');
+const passport = require('./passport')
+const MongoStore = require('connect-mongo')(session)
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Configure body parser for AJAX requests
+app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
 // Serve up static assets
 app.use(express.static("client/build"));
 // Add routes, both API and view
-app.use(routes);
 
 // Set up promises with mongoose
 mongoose.Promise = global.Promise;
 // Connect to the Mongo DB
+MONGO_URL =  process.env.MONGODB_URI || "mongodb://localhost/tripper"
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/tripper",
+  MONGO_URL,
   {
     useMongoClient: true
   }
 );
+
+
+const db = mongoose.connection
+db.on('error', err => {
+	console.log(`There was an error connecting to the database: ${err}`)
+})
+db.once('open', () => {
+	console.log(
+		`You have successfully connected to your mongo database: ${MONGO_URL}`
+	)
+})
+
+app.use(
+	session({
+		secret: process.env.APP_SECRET || 'this is the default passphrase',
+		store: new MongoStore({ mongooseConnection: db }),
+		resave: false,
+		saveUninitialized: false
+	})
+)
+app.use(passport.initialize());
+app.use(passport.session());
+
+const routes = require("./routes");
+app.use(routes);
+
+
+
+
 
 // Start the API server
 app.listen(PORT, function() {
