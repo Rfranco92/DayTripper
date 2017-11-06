@@ -7,9 +7,8 @@ import { Input, TextArea, FormBtn } from "../../components/Form";
 const Travel = props =>
   <div>
     <h1>Starting Location Details</h1>
-      <Input>
-      </Input>
-<Link to={`${props.match.url}/details`} className="btn btn-default">
+      <Input/>
+  <Link to={`${props.match.url}/details`} className="btn btn-default">
   ENHANCE!
 </Link>{" "}
 <Route exact path={`${props.match.url}/details`} component={Details} />

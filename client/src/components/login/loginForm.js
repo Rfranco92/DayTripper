@@ -57,16 +57,15 @@ class LoginForm extends Component {
 		} else {
 			return (
 				<div className="LoginForm">
-					<h1>Login form</h1>
 					<form>
-						<label htmlFor="username">Username: </label>
+						<label htmlFor="username">Username:</label>
 						<input
 							type="text"
 							name="username"
 							value={this.state.username}
 							onChange={this.handleChange}
 						/>
-						<label htmlFor="password">Password: </label>
+						<label htmlFor="password">Password:</label>
 						<input
 							type="password"
 							name="password"
