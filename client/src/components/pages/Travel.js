@@ -15,6 +15,8 @@ const Travel = props =>
     <BtnRow>
    	</BtnRow>
 
+   	
+
 
 
 <Link to={`${props.match.url}/details`} className="btn btn-default">

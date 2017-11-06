@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Navpills from "./components/Navpills";
-import Login from "./components/pages/login";
+import Login from "./components/pages/Login";
 import Create from "./components/pages/Create"
 import Travel from "./components/pages/Travel"
 import Details from "./components/pages/Details"
