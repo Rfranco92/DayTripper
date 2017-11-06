@@ -47,24 +47,6 @@ class login extends Component {
 			}
 		})
 	}
-
-	_login(username, password) {
-		axios
-			.post('/auth/login', {
-				username,
-				password
-			})
-			.then(response => {
-				console.log(response)
-				if (response.status === 200) {
-					// update the state
-					this.setState({
-						loggedIn: true,
-						user: response.data.user
-					})
-				}
-			})
-	}
 }
 
 render(){ 

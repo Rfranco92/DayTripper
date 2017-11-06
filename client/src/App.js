@@ -80,9 +80,9 @@ class App extends Component {
         </header>
         <Router>
           <div>
-            <Navpills />
+            <Navpills  _logout={this._logout} loggedIn={this.state.loggedIn} />
             <Header user={this.state.user} />       
-            <Route exact path="/" component={Home} />
+            <Route exact path="/login" component={Home} />
             <Route exact path="/create" component={Create} />
             <Route path="/travel" component={Travel} />
           </div>
