@@ -21,7 +21,14 @@ class SignupForm extends Component {
 	}
 	handleSubmit(event) {
 		event.preventDefault()
-		// TODO - validate!
+		 if (!this.state.username) {
+      	 alert("Fill out your username");
+    	} else if (this.state.password.length < 6) {
+      	alert(
+        `Choose a more secure password ${this.state.username}`
+      	);
+    	} 
+    	else{
 		axios
 			.post('/auth/signup', {
 				username: this.state.username,
@@ -29,15 +36,15 @@ class SignupForm extends Component {
 			})
 			.then(response => {
 				console.log(response)
-				if (!response.data.errmsg) {
-					console.log('youre good')
+				if (!response.data.error) {
 					this.setState({
-						redirectTo: '/'
+						redirectTo: '/login'
 					})
 				} else {
-					console.log('duplicate')
+					alert(response.data.error)
 				}
 			})
+		 }	
 	}
 	render() {
 		if (this.state.redirectTo) {

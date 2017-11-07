@@ -27,6 +27,9 @@ class Login extends Component  {
 					})
 					window.location.reload();
 				}
+				else  {
+					alert ("Oops, wrong username or password")
+				}
 			})
 	}
 	render() {

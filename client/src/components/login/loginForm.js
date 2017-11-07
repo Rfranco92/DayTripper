@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
-// import googleButton from './google_signin_buttons/web/1x/btn_google_signin_dark_disabled_web.png'
-import googleButton from './google_signin_buttons/web/1x/btn_google_signin_dark_normal_web.png'
 
 class LoginForm extends Component {
 	constructor() {
@@ -16,7 +14,7 @@ class LoginForm extends Component {
 		this.handleSubmit = this.handleSubmit.bind(this)
 		this.handleChange = this.handleChange.bind(this)
 	}
-	
+
 	handleChange(event) {
 		this.setState({
 			[event.target.name]: event.target.value
@@ -28,7 +26,7 @@ class LoginForm extends Component {
 		console.log('handleSubmit')
 		this.props._login(this.state.username, this.state.password)
 		this.setState({
-			redirectTo: '/'
+			redirectTo: '/details'
 		})
 	}
 
@@ -56,10 +54,6 @@ class LoginForm extends Component {
 						/>
 						<button onClick={this.handleSubmit}>Login</button>
 					</form>
-					<a href="/auth/google">
-						{/* <GoogleButton /> */}
-						<img src={googleButton} alt="sign into Google Button" />
-					</a>
 				</div>
 			)
 		}

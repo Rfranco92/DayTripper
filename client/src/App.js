@@ -16,7 +16,8 @@ class App extends Component {
     super()
     this.state = {
       loggedIn: false,
-      user: null
+      user: null, 
+      redirectTo: null
     }
     this._logout = this._logout.bind(this)
   }

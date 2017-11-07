@@ -4,16 +4,6 @@ const User = require('../../models/users')
 const passport = require('../../passport')
 const tripRoutes = require("./trips");
 
-
-router.get('/google', passport.authenticate('google', { scope: ['profile'] }))
-router.get(
-	'/google/callback',
-	passport.authenticate('google', {
-		successRedirect: '/',
-		failureRedirect: '/login'
-	})
-)
-
 // this route is just used to get the user basic info
 router.get('/user', (req, res, next) => {
 	console.log('===== user!!======')
@@ -28,7 +18,6 @@ router.get('/user', (req, res, next) => {
 router.post(
 	'/login',
 	function(req, res, next) {
-		console.log(req.body)
 		console.log('================')
 		next()
 	},
