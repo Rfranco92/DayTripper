@@ -15,11 +15,8 @@ const Navpills = props => {
 					Travel
 					</Link>
 				</li>
-				<li className="rightStuff">
-
-				</li>
-				<li className = "rightStuff">
-					<Link to="#" className="nav-link" onClick={props._logout}>
+				<li>
+					<Link to="/" className="nav-link" onClick={props._logout}>
 						Logout
 					</Link>
 				</li>
