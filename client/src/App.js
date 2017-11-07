@@ -3,11 +3,11 @@ import './App.css';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Navpills from "./components/Navpills";
 import Login from "./components/pages/Login";
-import Create from "./components/pages/Create"
-import Travel from "./components/pages/Travel"
-import Details from "./components/pages/Details"
-import Header from "./components/login/header"
-import axios from "axios"
+import Create from "./components/pages/Create";
+import Travel from "./components/pages/Travel";
+import Details from "./components/pages/Details";
+import Header from "./components/login/header";
+import axios from "axios";
 
 
 
