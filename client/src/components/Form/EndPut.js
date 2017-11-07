@@ -1,13 +1,12 @@
 import React from "react";
-import "./Input.css";
+import "./EndPut.css";
 import Submit from "../Submit"
 
-export const Input = props =>
+export const EndPut = props =>
   <div className="form-group">
-    <input className="form-control" formMethod="post" placeholder= "Starting Address"{...props} />
-    <input className="form-control" formMethod="post" placeholder= "Starting Time"{...props} />
+    <input className="form-control" formMethod="post" placeholder= "Ending Address"{...props} />
+    <input className="form-control" formMethod="post" placeholder= "End Time"{...props} />
     <input className="form-control" formMethod="post" placeholder= "something else"{...props} />
     <input className="form-control" formMethod="post" placeholder= "something else"{...props} />
-  	<Submit>Submit</Submit>
-
+    <Submit>Submit</Submit>
   </div>;

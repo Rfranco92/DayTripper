@@ -2,10 +2,13 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const tripSchema = new Schema({
-	startlocation: { type: String, required: true },
-	endlocation: { type: String, required: true},
+	start: { type: String, required: true },
+
+	end: { type: String, required: true},
 	startDate: Date,
+
 	endDate: Date,
+	
 	currentDate: {type: Date, default: Date.now }
 
 });
