@@ -1,29 +1,17 @@
 import React from "react";
-
-import Details from "./Details";
 import { Link, Route } from "react-router-dom";
 import { Input, TextArea, FormBtn, EndPut } from "../../components/Form";
+
 
 
 const Travel = props =>
   <div>
     <h1>Location Details</h1>
 
+    
 
     <Input>
     </Input>
-
-   
-
-	<Link to={`${props.match.url}/details`} className="btn btn-default">
-  	Details
-	</Link>{" "}
-	<Link to="/travel" className="btn btn-default">
-	Collapse
-	</Link>
-	<Route exact path={`${props.match.url}/details`} component={Details} />
-
-
 
 </div>;
 

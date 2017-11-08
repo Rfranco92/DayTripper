@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Navpills from "./components/Navpills";
-import Login from "./components/pages/Login";
+import Login from "./components/pages/login";
 import Create from "./components/pages/Create";
 import Travel from "./components/pages/Travel";
 import Details from "./components/pages/Details";
@@ -60,9 +60,23 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+      
+
         <header className="App-header">
-          <h1 className="App-title"><Header user={this.state.user} /></h1>
+        
+
+        <div className="col-lg-3">
+        <img src="https://image.ibb.co/h6triG/daytripper.jpg" alt="daytripper" className="logo" border="0" height="75">
+        </img>
+        </div>
+        <div className="col-lg-9">
+        <h1 className="App-title"><Header user={this.state.user} /></h1>
+        </div>
         </header>
+
+
+
+
         <Router>
           <div>
             <Navpills  _logout={this._logout} loggedIn={this.state.loggedIn} />
@@ -71,6 +85,7 @@ class App extends Component {
             <Route exact path="/create" component={Create} />
             <Route exact path="/trips" component={Trips} />
             <Route path="/travel" component={Travel} />
+
           </div>
 
         </Router>
