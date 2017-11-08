@@ -10,6 +10,20 @@ export class Input extends Component {
 
 	};
 
+componentDidMount() {
+    this.loadTrips();
+  }
+
+
+
+loadTrips = () => {
+    API.getTrips()
+      .then(res =>
+        this.setState({ address: "" })
+      )
+      .catch(err => console.log(err));
+  };
+
 handleInputChange = event => {
 	const { name, value } = event.target;
 	this.setState({
@@ -17,18 +31,13 @@ handleInputChange = event => {
 	});
 };
 
-
-
-
-
-
 handleFormSubmit = event => {
 	event.preventDefault();
 	if (this.state.address) {
 		API.saveTrip({
 			address: this.state.address
 		})
-		// .catch(err => console.log(err));
+		.catch(err => console.log(err));
 	}
 };
 
