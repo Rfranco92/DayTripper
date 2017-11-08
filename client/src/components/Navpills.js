@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./Navpills.css"
 
 const Navpills = props => { 
 	if (props.loggedIn) {
