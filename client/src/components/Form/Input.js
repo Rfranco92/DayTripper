@@ -54,6 +54,7 @@ render() {
 
 <div className="col-lg-6">
   <div className="form-group">
+
   <DropDown>
   </DropDown>
     <input className="form-control" 

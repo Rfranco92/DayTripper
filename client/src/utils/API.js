@@ -8,8 +8,4 @@ export default {
   deleteTrip: function(id) {
     return axios.delete("/api/trips/" + id);
   },
-  // Saves a book to the database
-  saveTrip: function(tripData) {
-    return axios.post("/api/trips", tripData);
-  }
-};
+  // Saves a trip to the database
