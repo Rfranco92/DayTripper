@@ -5,14 +5,19 @@ const Navpills = props => {
 	if (props.loggedIn) {
 		return (
 			<ul className="nav nav-tabs">
-				<li className={window.location.pathname ==="/details" ?  "active" : ""}>
-					<Link to ="/details">
-					Details
+				<li className={window.location.pathname ==="/trips" ?  "active" : ""}>
+					<Link to ="/trips">
+					Your Upcoming Trips
+					</Link>
+				</li>
+				<li className={window.location.pathname ==="/oldtrips" ?  "active" : ""}>
+					<Link to ="/oldtrips">
+					Your Past Trips
 					</Link>
 				</li>
 				<li className={window.location.pathname ==="/travel" ?  "active" : ""}>
 					<Link to ="/travel">
-					Travel
+					Plan a New Trip
 					</Link>
 				</li>
 				<li>
