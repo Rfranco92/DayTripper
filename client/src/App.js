@@ -6,8 +6,8 @@ import Login from "./components/pages/Login";
 import Create from "./components/pages/Create";
 import Travel from "./components/pages/Travel";
 import Details from "./components/pages/Details";
-import Trips from "./components/pages/Map"
-import Home from "./components/pages/Home"
+import Trips from "./components/pages/Map";
+import Home from "./components/pages/Home";
 import Header from "./components/login/header";
 import axios from "axios";
 
