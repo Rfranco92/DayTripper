@@ -6,7 +6,7 @@ import { Input, TextArea, FormBtn, EndPut } from "../../components/Form";
 
 const Travel = props =>
   <div>
-    <h1>Location Details</h1>
+    <h1>Plan Your Location</h1>
 
     
 

@@ -1,85 +1,140 @@
 import "./Input.css";
-import Submit from "../Submit";
 import React, { Component } from "react";
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
 import DropDown from "../DropDown";
+import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
 
 
-export class Input extends Component {
-	state = {
-		address:""
-
-	};
-
-componentDidMount() {
-    this.loadTrips();
+export class Input extends React.Component {
+    constructor(props) {
+    super(props)
+    this.state = {
+      address1: '',
+      address2: '',
+      geocodeResults: null,
+      loading: false
+    }
+    this.handleFormSubmit = this.handleFormSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    this.handleChanges = this.handleChanges.bind(this)
+    this.renderGeocodeFailure = this.renderGeocodeFailure.bind(this)
+    this.renderGeocodeSuccess = this.renderGeocodeSuccess.bind(this)
   }
 
+  handleFormSubmit(event) {
+  	event.preventDefault()
 
+    geocodeByAddress(this.state.address1)
+      .then((results) => getLatLng(results[0]))
+      .then(({ lat, lng }) => {
+        console.log('Success Yay', { lat, lng })
+        this.setState({
+          geocodeResults: this.renderGeocodeSuccess(lat, lng),
+          loading: false
+        })
+      })
+      .catch((error) => {
+        console.log('Oh no!', error)
+        this.setState({
+          geocodeResults: this.renderGeocodeFailure(error),
+          loading: false
+        })
+      })
 
-loadTrips = () => {
-    API.getTrip()
-      .then(res =>
-        this.setState({ address: "" })
-      )
-      .catch(err => console.log(err));
-  };
+     geocodeByAddress(this.state.address2)
+      .then((results) => getLatLng(results[0]))
+      .then(({ lat, lng }) => {
+        console.log('Success Yay', { lat, lng })
+        this.setState({
+          geocodeResults: this.renderGeocodeSuccess(lat, lng),
+          loading: false
+        })
+      })
+      .catch((error) => {
+        console.log('Oh no!', error)
+        this.setState({
+          geocodeResults: this.renderGeocodeFailure(error),
+          loading: false
+        })
+      })
+  }
 
-deleteBook = id => {
-    API.deleteTrip(id)
-    .then(res => this.loadTrips())
-    .catch(err => console.log(err));
-  };
+  handleChange(address1) {
+    this.setState({
+      address1,
+      geocodeResults: null
+    })
+  }
 
-handleInputChange = event => {
-	const { name, value } = event.target;
-	this.setState({
-		[name]: value
-	});
-};
+  handleChanges(address2) {
+    this.setState({
+      address2,
+      geocodeResults: null
+    })
+  }
 
-handleFormSubmit = event => {
-	event.preventDefault();
-	if (this.state.address) {
-		API.saveTrip({
-			address: this.state.address
-		})
-		.catch(err => console.log(err));
-	}
-};
+  renderGeocodeFailure(err) {
+    return (
+      <div className="alert alert-danger" role="alert">
+        <strong>Error!</strong> {err}
+      </div>
+    )
+  }
 
-render() {
-	return (
+  renderGeocodeSuccess(lat, lng) {
+    return (
+      <div className="alert alert-success" role="alert">
+        <strong>Success!</strong> Geocoder found latitude and longitude: <strong>{lat}, {lng}</strong>
+      </div>
+    )
+  }
 
-<div className="col-lg-6">
-  <div className="form-group">
+  render() {
 
-  <DropDown>
-  </DropDown>
-    <input className="form-control" 
-    	formMethod="post" 
-    	placeholder= "Starting Address"
-    	value={this.state.address}
-    	onChange={this.handleInputChange}
-    	name="address"
-    	/>
-    <input className="form-control" 
-    	formMethod="post" 
-    	placeholder= "Starting Time" 
-    	/>
-    <input className="form-control" 
-   		formMethod="post" 
-    	placeholder= "something else" 
-    	/>
-    <input className="form-control" 
-    	formMethod="post" 
-    	placeholder= "something else" 
-    	/>
-  	<Submit onClick={this.handleFormSubmit}>Submit</Submit>
+    const AutocompleteItem = ({ formattedSuggestion }) => (
+      <div className="Demo__suggestion-item">
+        <i className='fa fa-map-marker Demo__suggestion-icon'/>
+        <strong>{formattedSuggestion.mainText}</strong>{' '}
+        <small className="text-muted">{formattedSuggestion.secondaryText}</small>
+      </div>)
 
-  </div>
-</div>  
-		) 
-	}
+    const inputStartProps = {
+      type: "text",
+      value: this.state.address1,
+      onChange: this.handleChange,
+      onBlur: () => { console.log('Blur event!'); },
+      onFocus: () => { console.log('Focused!'); },
+      autoFocus: true,
+      placeholder: "Starting Address"
+    }
+
+    const inputEndProps = {
+      type: "text",
+      value: this.state.address2,
+      onChange: this.handleChanges,
+      onBlur: () => { console.log('Blur event!'); },
+      onFocus: () => { console.log('Focused!'); },
+      autoFocus: true,
+      placeholder: "Ending Address"
+    }
+
+    return (
+    	<div className="col-lg-6">
+  		<div className="form-group">
+      <form onSubmit={this.handleFormSubmit}>
+        <PlacesAutocomplete 
+            autocompleteItem={AutocompleteItem}
+            inputProps={inputStartProps} />
+        <PlacesAutocomplete 
+            autocompleteItem={AutocompleteItem}
+            inputProps={inputEndProps} />
+        <button>Submit</button>
+      </form>
+      </div>
+      </div>
+    )
+  }
 }
+
+export default Input;

@@ -7,4 +7,4 @@ export default {
   deleteTrip: function(id) {
     return axios.delete("/api/trips/" + id);
   }
-};  
+};

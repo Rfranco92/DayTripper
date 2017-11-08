@@ -1,5 +1,4 @@
 import "./EndPut.css";
-import Submit from "../Submit"
 import React, { Component } from "react";
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
@@ -65,7 +64,6 @@ render() {
     	formMethod="post" 
     	placeholder= "something else" 
     	/>
-  	<Submit onClick={this.handleFormSubmit}>Submit</Submit>
 
   </div>
 </div>
