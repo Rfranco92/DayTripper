@@ -39,7 +39,6 @@ class Login extends Component  {
     <p>     
         <LoginForm 
         _login={this._login}
-		_googleSignin={this._googleSignin}
 		/>
     </p>
   </div>

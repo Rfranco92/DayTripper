@@ -1,8 +1,8 @@
 import axios from "axios";
 
 export default {
-  // Saves a book to the database
-  saveBook: function(tripData) {
+  // Saves a trip to the database
+  saveTrip: function(tripData) {
     return axios.post("/api/trips", tripData);
   }
 };

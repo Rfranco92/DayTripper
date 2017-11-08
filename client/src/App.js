@@ -3,11 +3,13 @@ import './App.css';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Navpills from "./components/Navpills";
 import Login from "./components/pages/Login";
-import Create from "./components/pages/Create"
-import Travel from "./components/pages/Travel"
-import Details from "./components/pages/Details"
-import Header from "./components/login/header"
-import axios from "axios"
+import Create from "./components/pages/Create";
+import Travel from "./components/pages/Travel";
+import Details from "./components/pages/Details";
+import Trips from "./components/pages/Map"
+import Home from "./components/pages/Home"
+import Header from "./components/login/header";
+import axios from "axios";
 
 
 
@@ -65,7 +67,9 @@ class App extends Component {
           <div>
             <Navpills  _logout={this._logout} loggedIn={this.state.loggedIn} />
             <Route exact path="/login" component={Login} />
+            <Route exact path="/" component={Home} />
             <Route exact path="/create" component={Create} />
+            <Route exact path="/trips" component={Trips} />
             <Route path="/travel" component={Travel} />
           </div>
 
