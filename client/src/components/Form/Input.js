@@ -77,35 +77,6 @@ export class Input extends React.Component {
         }
       });
     });
-
-
-    // geocodeByAddress(this.state.address1)
-    //   .then((results) => getLatLng(results[0]))
-    //   .then(({ lat, lng }) => {
-    //     console.log('Success Yay', { lat, lng })
-    //     this.setState({
-    //       geocodeResults1: {lat, lng},
-    //       loading: false
-    //     })
-    //   })
-    //   .catch((error) => {
-    //     console.log('Oh no!', error)
-    //   })
-
-    //  geocodeByAddress(this.state.address2)
-    //   .then((results) => getLatLng(results[0]))
-    //   .then(({ lat, lng }) => {
-    //     console.log('Success Yay', { lat, lng })
-    //     this.setState({
-    //       geocodeResults2: {lat, lng},
-    //       loading: false
-    //     })
-    //   })
-    //   .catch((error) => {
-    //     console.log('Oh no!', error)
-    //   })
-
-
       
      }  
 
