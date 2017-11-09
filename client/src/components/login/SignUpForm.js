@@ -15,8 +15,16 @@ class SignupForm extends Component {
 		this.handleChange = this.handleChange.bind(this)
 	}
 	handleChange(event) {
-		this.setState({
-			[event.target.name]: event.target.value
+		
+			 let value = event.target.value;
+    		const name = event.target.name;
+
+    			if (name === "password") {
+      			value = value.substring(0, 15);
+      			}
+      		
+      		this.setState({
+			[name]: value
 		})
 	}
 	handleSubmit(event) {
