@@ -5,8 +5,6 @@ import { Link } from "react-router-dom";
 import DropDown from "../DropDown";
 import axios from "axios"
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
-
-
 export class Input extends React.Component {
     constructor(props) {
     super(props);
@@ -27,15 +25,18 @@ export class Input extends React.Component {
   }
 
 
+
   getGeoCode(address, addressType){
     return new Promise((resolve, reject) => {
       geocodeByAddress(address)
+
       .then((results) => getLatLng(results[0]))
       .then(({ lat, lng }) => {
         console.log('Success Yay', { lat, lng })
         this.setState({
           [addressType]: {lat, lng},
           loading: false
+
         });
 
         resolve(`Successfully retrieved geocode for ${addressType}`);
@@ -65,6 +66,7 @@ export class Input extends React.Component {
         geocodeResults2: this.state.geocodeResults2,
         start: this.state.start,
         end: this.state.end
+
       })
       .then(response => {
         console.log(response)
@@ -79,7 +81,6 @@ export class Input extends React.Component {
     });
       
      }  
-
     handleInputChange = event => {
     // Getting the value and name of the input which triggered the change
     let value = event.target.value;
@@ -88,15 +89,12 @@ export class Input extends React.Component {
       [name]: value
     });
     };
-
-
   handleChange(address1) {
     this.setState({
       address1,
       geocodeResults1: null
     })
   }
-
   handleChanges(address2) {
     this.setState({
       address2,
@@ -104,16 +102,13 @@ export class Input extends React.Component {
     })
   }
   
-
   render() {
-
     const AutocompleteItem = ({ formattedSuggestion }) => (
       <div className="Demo__suggestion-item">
         <i className='fa fa-map-marker Demo__suggestion-icon'/>
         <strong>{formattedSuggestion.mainText}</strong>{' '}
         <small className="text-muted">{formattedSuggestion.secondaryText}</small>
       </div>)
-
     const inputStartProps = {
       type: "text",
       value: this.state.address1,
@@ -123,7 +118,6 @@ export class Input extends React.Component {
       autoFocus: true,
       placeholder: "Starting Address"
     }
-
     const inputEndProps = {
       type: "text",
       value: this.state.address2,
@@ -133,28 +127,35 @@ export class Input extends React.Component {
       autoFocus: true,
       placeholder: "Ending Address"
     }
-
     return (
-    	<div className="col-lg-10">
-  	      <form onSubmit={this.handleFormSubmit}>
+        <div className="col-lg-10">
+
+            <div className="col-lg-3">
+            </div>
+
+          
+          <form onSubmit={this.handleFormSubmit}>
+            <div className="col-lg-3">
+
         <PlacesAutocomplete 
             autocompleteItem={AutocompleteItem}
             inputProps={inputStartProps} />
-            <br/>
-
           <input
+            className="farts"
             value={this.state.start}
             name="start"
             onChange={this.handleInputChange}
             type="date"
             placeholder="Starting Date"
             />
+          </div>  
+
+          <div className="col-lg-3">  
         <PlacesAutocomplete 
             autocompleteItem={AutocompleteItem}
             inputProps={inputEndProps} />
-
-
           <input
+            className="farts"
             value={this.state.end}
             name="end"
             onChange={this.handleInputChange}
@@ -162,11 +163,11 @@ export class Input extends React.Component {
             placeholder="Ending Date"
             />
 
-        <button>Submit</button>
+        <button className="pissShit">Submit</button>
       </form>
+         
       </div>
     )
   }
 }
-
 export default Input;

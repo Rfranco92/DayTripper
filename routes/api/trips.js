@@ -3,6 +3,8 @@ const express = require('express')
 const router = express.Router()
 const trips = require('../../models/trip')
 
+const tripsController = require("../../controllers/tripsController");
+
 
 
 router.post("/createtrip", function (req, res){
@@ -12,6 +14,7 @@ router.post("/createtrip", function (req, res){
 	res.json(tripdata);
 		})
 })
+
 
 
 router.get("/trips/:owner", function(req, res){
