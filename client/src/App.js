@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Navpills from "./components/Navpills";
-import Login from "./components/pages/login";
+import Login from "./components/pages/Login";
 import Create from "./components/pages/Create";
 import Travel from "./components/pages/Travel";
 import Details from "./components/pages/Details";
@@ -64,12 +64,10 @@ class App extends Component {
 
         <header className="App-header">
         
-
         <div className="col-lg-1">
-        <a href="./">
-        <img src="https://image.ibb.co/h6triG/daytripper.jpg" alt="daytripper" className="logo" border="0" height="75">    
-        </img>
-        </a>
+        <a href="/"><img src="https://image.ibb.co/h6triG/daytripper.jpg" alt="daytripper" className="logo" border="0" height="75">
+        </img></a>
+      
         </div>
         <div className="col-lg-11">
         <h1 className="App-title"><Header user={this.state.user} /></h1>

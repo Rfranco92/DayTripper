@@ -12,14 +12,15 @@ export class Input extends React.Component {
     this.state = {
       address1: '',
       address2: '',
-      geocodeResults: null,
+      start: '',
+      end: '',
+      geocodeResults1: '',
+      geocodeResults2: '',
       loading: false
     }
     this.handleFormSubmit = this.handleFormSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.handleChanges = this.handleChanges.bind(this)
-    this.renderGeocodeFailure = this.renderGeocodeFailure.bind(this)
-    this.renderGeocodeSuccess = this.renderGeocodeSuccess.bind(this)
   }
 
   handleFormSubmit(event) {
@@ -30,16 +31,12 @@ export class Input extends React.Component {
       .then(({ lat, lng }) => {
         console.log('Success Yay', { lat, lng })
         this.setState({
-          geocodeResults: this.renderGeocodeSuccess(lat, lng),
+          geocodeResults1: {lat, lng},
           loading: false
         })
       })
       .catch((error) => {
         console.log('Oh no!', error)
-        this.setState({
-          geocodeResults: this.renderGeocodeFailure(error),
-          loading: false
-        })
       })
 
      geocodeByAddress(this.state.address2)
@@ -47,17 +44,14 @@ export class Input extends React.Component {
       .then(({ lat, lng }) => {
         console.log('Success Yay', { lat, lng })
         this.setState({
-          geocodeResults: this.renderGeocodeSuccess(lat, lng),
+          geocodeResults2: {lat, lng},
           loading: false
         })
       })
       .catch((error) => {
         console.log('Oh no!', error)
-        this.setState({
-          geocodeResults: this.renderGeocodeFailure(error),
-          loading: false
-        })
       })
+
   }
 
   handleChange(address1) {
@@ -73,22 +67,7 @@ export class Input extends React.Component {
       geocodeResults: null
     })
   }
-
-  renderGeocodeFailure(err) {
-    return (
-      <div className="alert alert-danger" role="alert">
-        <strong>Error!</strong> {err}
-      </div>
-    )
-  }
-
-  renderGeocodeSuccess(lat, lng) {
-    return (
-      <div className="alert alert-success" role="alert">
-        <strong>Success!</strong> Geocoder found latitude and longitude: <strong>{lat}, {lng}</strong>
-      </div>
-    )
-  }
+  
 
   render() {
 
