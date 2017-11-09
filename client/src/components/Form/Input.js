@@ -99,18 +99,31 @@ export class Input extends React.Component {
     }
 
     return (
-    	<div className="col-lg-10">
+    	<div classname="container">
+          <div className="Row">
+
+      <div className="col-lg-3">
+      </div>
+    
+        <div className="col-lg-3">
   	      <form onSubmit={this.handleFormSubmit}>
         <PlacesAutocomplete 
             autocompleteItem={AutocompleteItem}
             inputProps={inputStartProps} />
-            <br/>
+            </form>
+          </div>
+
+         <div className="col-lg-3"> 
+          <form onSubmit={this.handleFormSubmit}>
         <PlacesAutocomplete 
             autocompleteItem={AutocompleteItem}
             inputProps={inputEndProps} />
-        <button>Submit</button>
-      </form>
-      </div>
+          </form>
+        </div>
+  <button>Submit</button>
+        </div> 
+  
+      </div> // container
     )
   }
 }
