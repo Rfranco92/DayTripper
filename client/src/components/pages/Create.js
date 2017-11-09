@@ -4,7 +4,7 @@ import FooterBar from "../../components/FooterBar";
 import "./Create.css"
 
 const Create = () =>
-  <div className="Create">
+  <div className="vomit">
     <h3>Please Create a Username and Password. Password has to be at least 6 characters long.</h3>
    
       <SignupForm />

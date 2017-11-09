@@ -65,9 +65,9 @@ class App extends Component {
         <header className="App-header">
         
         <div className="col-lg-1">
-        <a href="/"><img src="https://image.ibb.co/h6triG/daytripper.jpg" alt="daytripper" className="logo" border="0" height="75">
+        <a href="/"><img src="https://i.imgur.com/UGEu53l.jpg" alt="daytripper" className="logo" border="0" height="75">
         </img></a>
-      
+
         </div>
         <div className="col-lg-11">
         <h1 className="App-title"><Header user={this.state.user} /></h1>
