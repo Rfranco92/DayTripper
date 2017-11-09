@@ -7,12 +7,7 @@ const userSchema = new Schema({
 	local: {
 		username: { type: String, unique: false, required: false },
 		password: { type: String, unique: false, required: false }
-	},
-
-	trip: {
-    	type: Schema.Types.ObjectId,
-   	    ref: "Trip"
-  	}
+	}
 })
 
 // Define schema methods

@@ -9,8 +9,9 @@ import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-au
 
 export class Input extends React.Component {
     constructor(props) {
-    super(props)
+    super(props);
     this.state = {
+      name: props.user.local.username,
       address1: '',
       address2: '',
       start: '',
@@ -22,44 +23,48 @@ export class Input extends React.Component {
     this.handleFormSubmit = this.handleFormSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.handleChanges = this.handleChanges.bind(this)
+    console.log(this.state);
+  }
+
+
+  getGeoCode(address, addressType){
+    return new Promise((resolve, reject) => {
+      geocodeByAddress(address)
+      .then((results) => getLatLng(results[0]))
+      .then(({ lat, lng }) => {
+        console.log('Success Yay', { lat, lng })
+        this.setState({
+          [addressType]: {lat, lng},
+          loading: false
+        });
+
+        resolve(`Successfully retrieved geocode for ${addressType}`);
+      })
+      .catch((error) => {
+        console.log('Oh no!', error)
+      });
+    });
   }
 
   handleFormSubmit(event) {
-  	event.preventDefault()
+  	event.preventDefault() 
 
-    geocodeByAddress(this.state.address1)
-      .then((results) => getLatLng(results[0]))
-      .then(({ lat, lng }) => {
-        console.log('Success Yay', { lat, lng })
-        this.setState({
-          geocodeResults1: {lat, lng},
-          loading: false
-        })
-      })
-      .catch((error) => {
-        console.log('Oh no!', error)
-      })
+    var geoCodePromises = [
+    this.getGeoCode(this.state.address1, "geocodeResults1"),
+    this.getGeoCode(this.state.address2, "geocodeResults2")
+    ];
 
-     geocodeByAddress(this.state.address2)
-      .then((results) => getLatLng(results[0]))
-      .then(({ lat, lng }) => {
-        console.log('Success Yay', { lat, lng })
-        this.setState({
-          geocodeResults2: {lat, lng},
-          loading: false
-        })
-      })
-      .catch((error) => {
-        console.log('Oh no!', error)
-      })
-
-
-      axios
-      .post('/api/createtrip', {
-        address: this.state.geocodeResults1,
-        end: this.state.geocodeResults2,
-        startDate: this.state.start,
-        endDate: this.state.end
+    Promise.all(geoCodePromises)
+    .then(values =>{
+      console.log(values);
+      API.createTrip({
+        name: this.state.name,
+        startaddress: this.state.address1,
+        geocodeResults1: this.state.geocodeResults1,
+        endaddress: this.state.address2,
+        geocodeResults2: this.state.geocodeResults2,
+        start: this.state.start,
+        end: this.state.end
       })
       .then(response => {
         console.log(response)
@@ -70,7 +75,38 @@ export class Input extends React.Component {
         } else {
           alert(response.data.error)
         }
-      })
+      });
+    });
+
+
+    // geocodeByAddress(this.state.address1)
+    //   .then((results) => getLatLng(results[0]))
+    //   .then(({ lat, lng }) => {
+    //     console.log('Success Yay', { lat, lng })
+    //     this.setState({
+    //       geocodeResults1: {lat, lng},
+    //       loading: false
+    //     })
+    //   })
+    //   .catch((error) => {
+    //     console.log('Oh no!', error)
+    //   })
+
+    //  geocodeByAddress(this.state.address2)
+    //   .then((results) => getLatLng(results[0]))
+    //   .then(({ lat, lng }) => {
+    //     console.log('Success Yay', { lat, lng })
+    //     this.setState({
+    //       geocodeResults2: {lat, lng},
+    //       loading: false
+    //     })
+    //   })
+    //   .catch((error) => {
+    //     console.log('Oh no!', error)
+    //   })
+
+
+      
      }  
 
     handleInputChange = event => {
@@ -154,6 +190,7 @@ export class Input extends React.Component {
             type="date"
             placeholder="Ending Date"
             />
+
         <button>Submit</button>
       </form>
       </div>
