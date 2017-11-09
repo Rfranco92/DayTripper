@@ -4,6 +4,7 @@ const router = express.Router()
 const Destination = require('../../models/destination')
 const tripRoutes = require("./trips");
 
+const tripsController = require("../../controllers/tripsController");
 
 router
 	.route("/trips")
@@ -11,8 +12,6 @@ router
 
 	console.log("here we are");
 
-router.post("/createtrip", function (req, res){
-	
-})
+
 
 module.exports = router;

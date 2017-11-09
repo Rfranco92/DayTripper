@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
 import DropDown from "../DropDown";
-import axios from "axios"
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
 
 
@@ -53,47 +52,19 @@ export class Input extends React.Component {
         console.log('Oh no!', error)
       })
 
-
-      axios
-      .post('/api/createtrip', {
-        address: this.state.geocodeResults1,
-        end: this.state.geocodeResults2,
-        startDate: this.state.start,
-        endDate: this.state.end
-      })
-      .then(response => {
-        console.log(response)
-        if (!response.data.error) {
-          this.setState({
-            redirectTo: '/currenttrips'
-          })
-        } else {
-          alert(response.data.error)
-        }
-      })
-     }  
-
-    handleInputChange = event => {
-    // Getting the value and name of the input which triggered the change
-    let value = event.target.value;
-    const name = event.target.name;
-    this.setState({
-      [name]: value
-    });
-    };
-
+  }
 
   handleChange(address1) {
     this.setState({
       address1,
-      geocodeResults1: null
+      geocodeResults: null
     })
   }
 
   handleChanges(address2) {
     this.setState({
       address2,
-      geocodeResults2: null
+      geocodeResults: null
     })
   }
   
@@ -134,26 +105,9 @@ export class Input extends React.Component {
             autocompleteItem={AutocompleteItem}
             inputProps={inputStartProps} />
             <br/>
-
-          <input
-            value={this.state.start}
-            name="start"
-            onChange={this.handleInputChange}
-            type="date"
-            placeholder="Starting Date"
-            />
         <PlacesAutocomplete 
             autocompleteItem={AutocompleteItem}
             inputProps={inputEndProps} />
-
-
-          <input
-            value={this.state.end}
-            name="end"
-            onChange={this.handleInputChange}
-            type="date"
-            placeholder="Ending Date"
-            />
         <button>Submit</button>
       </form>
       </div>
