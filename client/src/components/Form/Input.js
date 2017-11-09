@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
 import DropDown from "../DropDown";
+import axios from "axios"
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
 
 
@@ -52,19 +53,47 @@ export class Input extends React.Component {
         console.log('Oh no!', error)
       })
 
-  }
+
+      axios
+      .post('/api/createtrip', {
+        address: this.state.geocodeResults1,
+        end: this.state.geocodeResults2,
+        startDate: this.state.start,
+        endDate: this.state.end
+      })
+      .then(response => {
+        console.log(response)
+        if (!response.data.error) {
+          this.setState({
+            redirectTo: '/currenttrips'
+          })
+        } else {
+          alert(response.data.error)
+        }
+      })
+     }  
+
+    handleInputChange = event => {
+    // Getting the value and name of the input which triggered the change
+    let value = event.target.value;
+    const name = event.target.name;
+    this.setState({
+      [name]: value
+    });
+    };
+
 
   handleChange(address1) {
     this.setState({
       address1,
-      geocodeResults: null
+      geocodeResults1: null
     })
   }
 
   handleChanges(address2) {
     this.setState({
       address2,
-      geocodeResults: null
+      geocodeResults2: null
     })
   }
   
@@ -110,6 +139,7 @@ export class Input extends React.Component {
         <PlacesAutocomplete 
             autocompleteItem={AutocompleteItem}
             inputProps={inputStartProps} />
+<<<<<<< HEAD
             </form>
           </div>
 
@@ -124,6 +154,32 @@ export class Input extends React.Component {
         </div> 
   
       </div> // container
+=======
+            <br/>
+
+          <input
+            value={this.state.start}
+            name="start"
+            onChange={this.handleInputChange}
+            type="date"
+            placeholder="Starting Date"
+            />
+        <PlacesAutocomplete 
+            autocompleteItem={AutocompleteItem}
+            inputProps={inputEndProps} />
+
+
+          <input
+            value={this.state.end}
+            name="end"
+            onChange={this.handleInputChange}
+            type="date"
+            placeholder="Ending Date"
+            />
+        <button>Submit</button>
+      </form>
+      </div>
+>>>>>>> 5d3ae44a47e8cd400f38182e3833917821a4925a
     )
   }
 }
