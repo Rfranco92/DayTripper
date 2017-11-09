@@ -6,15 +6,21 @@ import "./Travel.css"
 
 
 
-const Travel = props =>
+const Travel = props =>{
+
+console.log(props.user)
+return(
   <div>
     <h1 className="assHole">Plan Your Location</h1>
-    <Input>
+    <Input user={props.user}>
+
     </Input>
 
     <FooterBar>
     </FooterBar>
 
-</div>;
+</div>
+)
+}
 
 export default Travel;

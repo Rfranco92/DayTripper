@@ -1,12 +1,28 @@
 import React, { Component } from "react";
 import MapWithADirectionsRenderer from "../Maps/supermap"
+import API from "../../utils/API";
+
 class MyFancyComponent extends React.PureComponent {
-  state = {
-    isMarkerShown: false,
+  constructor(props) { 
+  super(props);
+
+  console.log(props);
+  this.state = {
+    name: props.user.local.username,
+    isTrips: false
   }
 
+  console.log(this.state);
+ }
   componentDidMount() {
     this.delayedShowMarker()
+
+   API.getTrip(this.state.name).then(response => {
+        console.log(response)
+        if (response.status === 200) {
+          isTrips: true
+        }
+      });
   }
 
   delayedShowMarker = () => {

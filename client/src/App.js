@@ -25,7 +25,6 @@ class App extends Component {
   }
   componentDidMount() {
     axios.get('/auth/user').then(response => {
-      console.log(response.data)
       if (!!response.data.user) {
         console.log('THERE IS A USER')
         this.setState({
@@ -79,12 +78,15 @@ class App extends Component {
 
         <Router>
           <div>
-            <Navpills  _logout={this._logout} loggedIn={this.state.loggedIn} />
+            <Navpills user={this.state.user}  _logout={this._logout} loggedIn={this.state.loggedIn} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/" component={Home} />
             <Route exact path="/create" component={Create} />
-            <Route exact path="/trips" component={Trips} />
-            <Route exact path="/travel" component={Travel} />
+            <Route path="/trips"  render = {(props) =>
+              <Trips user={this.state.user} {...props} />} />
+            <Route exact path="/travel" render = {(props) =>
+              <Travel user={this.state.user} {...props} />
+            } />
 
           </div>
 
