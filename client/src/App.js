@@ -65,11 +65,13 @@ class App extends Component {
         <header className="App-header">
         
 
-        <div className="col-lg-3">
-        <img src="https://image.ibb.co/h6triG/daytripper.jpg" alt="daytripper" className="logo" border="0" height="75">
+        <div className="col-lg-1">
+        <a href="./">
+        <img src="https://image.ibb.co/h6triG/daytripper.jpg" alt="daytripper" className="logo" border="0" height="75">    
         </img>
+        </a>
         </div>
-        <div className="col-lg-9">
+        <div className="col-lg-11">
         <h1 className="App-title"><Header user={this.state.user} /></h1>
         </div>
         </header>
@@ -84,12 +86,11 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route exact path="/create" component={Create} />
             <Route exact path="/trips" component={Trips} />
-            <Route path="/travel" component={Travel} />
+            <Route exact path="/travel" component={Travel} />
 
           </div>
 
         </Router>
-
 
       </div>
     );
