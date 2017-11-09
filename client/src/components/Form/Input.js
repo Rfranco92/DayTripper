@@ -110,7 +110,6 @@ export class Input extends React.Component {
         <PlacesAutocomplete 
             autocompleteItem={AutocompleteItem}
             inputProps={inputStartProps} />
-<<<<<<< HEAD
             </form>
           </div>
 
@@ -125,15 +124,6 @@ export class Input extends React.Component {
         </div> 
   
       </div> // container
-=======
-            <br/>
-        <PlacesAutocomplete 
-            autocompleteItem={AutocompleteItem}
-            inputProps={inputEndProps} />
-        <button>Submit</button>
-      </form>
-      </div>
->>>>>>> 5d3ae44a47e8cd400f38182e3833917821a4925a
     )
   }
 }
