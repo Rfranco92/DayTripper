@@ -1,14 +1,18 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const bcrypt = require('bcryptjs')
-mongoose.promise = Promise
 
 // Define userSchema
 const userSchema = new Schema({
 	local: {
 		username: { type: String, unique: false, required: false },
 		password: { type: String, unique: false, required: false }
-	}
+	},
+
+	trip: {
+    	type: Schema.Types.ObjectId,
+   	    ref: "Trip"
+  	}
 })
 
 // Define schema methods
@@ -30,8 +34,6 @@ userSchema.pre('save', function(next) {
 		this.local.password = this.hashPassword(this.local.password)
 		next()
 	}
-	// this.password = this.hashPassword(this.password)
-	// next()
 })
 
 // Create reference to User & export

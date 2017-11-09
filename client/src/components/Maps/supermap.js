@@ -19,7 +19,7 @@ const MapWithADirectionsRenderer = compose(
 
       DirectionsService.route({
         origin: new google.maps.LatLng(40.534274, -74.520258),
-        destination: new google.maps.LatLng(41.8525800, -87.6514100),
+        destination: new google.maps.LatLng(34.0928, -118.3287),
         travelMode: google.maps.TravelMode.DRIVING,
       }, (result, status) => {
         if (status === google.maps.DirectionsStatus.OK) {
@@ -35,7 +35,7 @@ const MapWithADirectionsRenderer = compose(
 )(props =>
   <GoogleMap
     defaultZoom={7}
-    defaultCenter={new google.maps.LatLng(41.8507300, -87.6512600)}
+    defaultCenter={new google.maps.LatLng(34.0928, 118.3287)}
 
   >
     {props.directions && <DirectionsRenderer directions={props.directions} />}

@@ -3,12 +3,9 @@ const Schema = mongoose.Schema;
 
 const tripSchema = new Schema({
 	address: { type: String, required: true},
-
-	end: { type: String, required: false},
+	end: { type: String, required: true},
 	startDate: Date,
-
 	endDate: Date,
-	
 	currentDate: {type: Date, default: Date.now }
 
 });
