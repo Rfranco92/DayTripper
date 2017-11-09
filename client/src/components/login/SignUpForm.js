@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Redirect } from 'react-router-dom'
+import "./SignUpForm.css"
 
 class SignupForm extends Component {
 	constructor() {
@@ -60,7 +61,6 @@ class SignupForm extends Component {
 		}
 		return (
 			<div className="SignupForm">
-				<h1>Signup form</h1>
 				<label htmlFor="username">Username: </label>
 				<input
 					type="text"

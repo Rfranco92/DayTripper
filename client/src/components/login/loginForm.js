@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
-import axios from 'axios'
+import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
+import axios from 'axios';
+import "./loginForm.css";
 
 class LoginForm extends Component {
 	constructor() {
@@ -36,7 +37,6 @@ class LoginForm extends Component {
 		} else {
 			return (
 				<div className="LoginForm">
-					<h1>Login form</h1>
 					<form>
 						<label htmlFor="username">Username: </label>
 						<input
