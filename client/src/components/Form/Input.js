@@ -120,18 +120,17 @@ export class Input extends React.Component {
     }
 
     return (
-    	<div className="col-lg-6">
-  		<div className="form-group">
-      <form onSubmit={this.handleFormSubmit}>
+    	<div className="col-lg-10">
+  	      <form onSubmit={this.handleFormSubmit}>
         <PlacesAutocomplete 
             autocompleteItem={AutocompleteItem}
             inputProps={inputStartProps} />
+            <br/>
         <PlacesAutocomplete 
             autocompleteItem={AutocompleteItem}
             inputProps={inputEndProps} />
         <button>Submit</button>
       </form>
-      </div>
       </div>
     )
   }

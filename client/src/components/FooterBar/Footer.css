@@ -1,0 +1,18 @@
+.col-lg-12 {
+	background-color: black;
+	height: 19%;
+	width: 100%;
+	opacity: 0.5;
+	position: absolute;
+	bottom: 0;
+	margin-bottom: 0px;
+
+}
+
+.CopyText{
+	color: red;
+	text-align: center;
+	padding: 4%;
+	margin-bottom: 0;
+
+}

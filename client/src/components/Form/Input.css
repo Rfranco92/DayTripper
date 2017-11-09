@@ -1,9 +1,6 @@
-.form-group {
-	width: 60%;
-	align-self: center;
-	margin-left: 15%;
-}
+.col-lg-10 {
+	position: absolute;
+	bottom: 50%;
+	left: 7%;
 
-.form-control {
-	margin-top: 2%;
 }
