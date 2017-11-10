@@ -8,18 +8,16 @@ class MyFancyComponent extends React.PureComponent {
   constructor(props) { 
   super(props);
   this.state = {
-    trips: [],
-    isTrips: false
+    members: []
   }
 
   console.log(this.state);
  }
   componentDidMount() {
 
-   API.getTrip(this.props.match.params.username).then(response => {
+   API.getMembers().then(response => {
           this.setState({ 
-          isTrips: true,
-          trips: response.data
+          members: response.data
         })
           console.log(response.data);
         })
@@ -29,24 +27,14 @@ class MyFancyComponent extends React.PureComponent {
   render() {
     return ( 
       <Container fluid>
-      {this.state.trips.length ? (
+      {this.state.members.length ? (
         <List>
-        {this.state.trips.map(trip => (
-          <ListItem key={trip._id}>
-            <Link to={"/maps/" + trip._id}>
+        {this.state.members.map(member => (
+          <ListItem key={member._id}>
+            <Link to={"/trips/" + member.local.username}>
             <strong>
-              Trip from {trip.startAdd} to {trip.endAdd} 
-              <br></br>
-              Starts: {trip.startDate}
-              <br></br> 
-              Ends: {trip.endDate}
+          {member.local.username}
             </strong>
-            </Link>
-
-            <Link to={"/streetview/" + trip._id}>
-            <button>
-            Streetview
-            </button>
             </Link>
             </ListItem>
 
@@ -57,7 +45,7 @@ class MyFancyComponent extends React.PureComponent {
 
       : (
 
-        <h1>You do not have any trips available</h1>
+        <h1>There Are No Members Yet!</h1>
         )}
     </Container>
 
