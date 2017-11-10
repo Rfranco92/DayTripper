@@ -6,12 +6,15 @@ import Login from "./components/pages/login";
 import Create from "./components/pages/Create";
 import Travel from "./components/pages/Travel";
 import Details from "./components/pages/Details";
-import Trips from "./components/pages/Map";
+import Trips from "./components/pages/Trips";
 import Home from "./components/pages/Home";
+import Maps from "./components/pages/Maps";
+import Streetview from "./components/pages/Streetview";
 import Header from "./components/login/header";
 import axios from "axios";
 
 
+const google = window.google
 
 class App extends Component {
   constructor() {
@@ -82,8 +85,9 @@ class App extends Component {
             <Route exact path="/login" component={Login} />
             <Route exact path="/" component={Home} />
             <Route exact path="/create" component={Create} />
-            <Route path="/trips"  render = {(props) =>
-              <Trips user={this.state.user} {...props} />} />
+            <Route path="/trips/:username" component={Trips} />
+            <Route path="/maps/:_id" component={Maps} />
+            <Route path="/streetview/:id" component={Streetview} />
             <Route exact path="/travel" render = {(props) =>
               <Travel user={this.state.user} {...props} />
             } />

@@ -8,7 +8,7 @@ const Navpills = props => {
 			<ul className="nav nav-tabs">
 				<li className={window.location.pathname ===`/trips/${props.user.local.username}` ?  "active" : ""}>
 					<Link to = {`/trips/${props.user.local.username}`}>
-					Your Upcoming Trips
+					Your Trips
 					</Link>
 				</li>
 				<li className={window.location.pathname ===`/oldtrips/${props.user.local.username}` ?  "active" : ""}>

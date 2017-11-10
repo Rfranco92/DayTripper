@@ -1,3 +1,3 @@
 module.exports = {
-  Trip: require("./destination")
+  Trip: require("./trip")
 };

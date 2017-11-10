@@ -162,7 +162,7 @@ export class Input extends React.Component {
             type="date"
             placeholder="Ending Date"
             />
-
+        </div>
         <button className="pissShit">Submit</button>
       </form>
          

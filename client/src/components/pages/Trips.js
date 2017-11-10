@@ -8,10 +8,8 @@ import { List, ListItem } from "../../components/List";
 class MyFancyComponent extends React.PureComponent {
   constructor(props) { 
   super(props);
-  console.log(this);
-  console.log(props);
   this.state = {
-    name: this.props.user.local.username,
+    name: "",
     trips: [],
     isTrips: false
   }
@@ -20,13 +18,12 @@ class MyFancyComponent extends React.PureComponent {
  }
   componentDidMount() {
 
-
-
-   API.getTrip(this.state.name).then(response => {
+   API.getTrip(this.props.match.params.username).then(response => {
           this.setState({ 
           isTrips: true,
           trips: response.data
         })
+          console.log(response.data);
         })
         .catch(err => console.log(err));
   }
