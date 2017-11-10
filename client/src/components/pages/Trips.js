@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-
-
 import { Link } from "react-router-dom";
 import API from "../../utils/API";
 import { List, ListItem } from "../../components/List";
@@ -40,22 +38,19 @@ class MyFancyComponent extends React.PureComponent {
           <div key={trip._id} className="blackli" >
 
             <Link to={"/maps/" + trip._id} className="blackli" >
-            <strong>
+            <p>
               Trip from {trip.startAdd} to {trip.endAdd} 
               <br></br>
               Starts: {trip.startDate}
               <br></br> 
               Ends: {trip.endDate}
-            </strong>
+            </p>
             </Link>
-
-
             <Link to={"/streetview/" + trip._id}>
             <button>
             Streetview
             </button>
-            </Link>
-
+            </Link> 
           </div>
 
 
