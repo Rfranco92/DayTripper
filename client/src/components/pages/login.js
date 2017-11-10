@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import LoginForm from "../login/loginForm.js"
-import axios from 'axios'
-
+import LoginForm from "../login/loginForm.js";
+import axios from 'axios';
+import FooterBar from "../../components/FooterBar";
+import "./login.css";
 
 class Login extends Component  {
 
@@ -27,20 +28,24 @@ class Login extends Component  {
 					})
 					window.location.reload();
 				}
+				else  {
+					alert ("Oops, wrong username or password")
+				}
 			})
 	}
 	render() {
 		return( 
-  <div>
-    <h1>Please log in using your username and password</h1>
-    <p>     
-        <LoginForm 
-        _login={this._login}
-		_googleSignin={this._googleSignin}
-		/>
-    </p>
-  </div>
-  )
-	}
-}	
+            <div>
+                <h1 className="vomit">Please log in using your username and password</h1>
+                    <LoginForm _login={this._login}/>
+                <FooterBar>
+                </FooterBar>	
+
+
+
+            </div>
+              )
+	         }
+            };	
+
 export default Login;
