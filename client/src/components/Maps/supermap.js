@@ -1,6 +1,7 @@
 import React from "react"
 import { compose, withProps, lifecycle } from "recompose"
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, DirectionsRenderer } from "react-google-maps"
+// import "../../BtnRow";
 
 const google = window.google
 
@@ -41,7 +42,7 @@ const MapWithADirectionsRenderer = compose(
     }
   })
 )(props =>
-
+  <container>
   <GoogleMap
     defaultZoom={7}
     defaultCenter={new google.maps.LatLng(34.0928, 118.3287)}
@@ -49,6 +50,10 @@ const MapWithADirectionsRenderer = compose(
   >
     {props.directions && <DirectionsRenderer directions={props.directions} />}
   </GoogleMap>
+
+
+  </container>
+
 );
 
 
