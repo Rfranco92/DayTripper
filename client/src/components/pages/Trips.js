@@ -1,8 +1,12 @@
 import React, { Component } from "react";
+
+
+import MapWithADirectionsRenderer from "../Maps/supermap";
 import { Link } from "react-router-dom";
 import API from "../../utils/API";
-import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
+import "./Trips.css";
+import FooterBar from "../../components/FooterBar"
 
 class MyFancyComponent extends React.PureComponent {
   constructor(props) { 
@@ -28,12 +32,14 @@ class MyFancyComponent extends React.PureComponent {
 
   render() {
     return ( 
-      <Container fluid>
+<container>      
+
+      <div className="col-lg-9 col-lg-offset-1">
       {this.state.trips.length ? (
-        <List>
+        <ul className="black">
         {this.state.trips.map(trip => (
-          <ListItem key={trip._id}>
-            <Link to={"/maps/" + trip._id}>
+          <div key={trip._id} className="blackli" >
+            <Link to={"/maps/" + trip._id} className="blackli" >
             <strong>
               Trip from {trip.startAdd} to {trip.endAdd} 
               <br></br>
@@ -43,6 +49,7 @@ class MyFancyComponent extends React.PureComponent {
             </strong>
             </Link>
 
+
             <Link to={"/streetview/" + trip._id}>
             <button>
             Streetview
@@ -50,17 +57,28 @@ class MyFancyComponent extends React.PureComponent {
             </Link>
             </ListItem>
 
+          </div>
+
+
           ))}
-        </List>
+        </ul>
 
         )
 
       : (
 
-        <h1>You do not have any trips available</h1>
+        <h1 className="empty">You do not have any trips available</h1>
         )}
-    </Container>
 
+  
+
+
+    </div>
+
+<FooterBar>      
+</FooterBar>
+
+</container>
 
     )
   }
