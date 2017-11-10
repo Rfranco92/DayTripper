@@ -4,17 +4,7 @@ import { Redirect } from 'react-router-dom'
 import "./SignUpForm.css"
 
 class SignupForm extends Component {
-	constructor() {
-		super()
-		this.state = {
-			username: '',
-			password: '',
-			confirmPassword: '',
-			redirectTo: null
-		}
-		this.handleSubmit = this.handleSubmit.bind(this)
-		this.handleChange = this.handleChange.bind(this)
-	}
+	
 	handleChange(event) {
 		
 			 let value = event.target.value;

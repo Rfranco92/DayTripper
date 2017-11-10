@@ -5,7 +5,8 @@ import { withScriptjs, withGoogleMap, GoogleMap, Marker, DirectionsRenderer } fr
 const google = window.google
 
 const MapWithADirectionsRenderer = compose(
-  withProps({
+
+  withProps( {
     googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyC4R6AN7SmujjPUIGKdyao2Kqitzr1kiRg&v=3.exp&libraries=geometry,drawing,places",
     loadingElement: <div style={{ height: `100%` }} />,
     containerElement: <div style={{ height: `500px` }} />,
@@ -15,17 +16,24 @@ const MapWithADirectionsRenderer = compose(
   withGoogleMap,
   lifecycle({
     componentDidMount() {
-      const DirectionsService = new google.maps.DirectionsService();
+      var startLat = this.props.startLat
+      var startLong = this.props.startLong
+      var endLat = this.props.endLat
+      var endLong = this.props.endLong
 
+
+      const DirectionsService = new google.maps.DirectionsService();
       DirectionsService.route({
-        origin: new google.maps.LatLng(40.534274, -74.520258),
-        destination: new google.maps.LatLng(34.0928, -118.3287),
+        origin: new google.maps.LatLng(startLat, startLong),
+        destination: new google.maps.LatLng(endLat, endLong),
         travelMode: google.maps.TravelMode.DRIVING,
       }, (result, status) => {
         if (status === google.maps.DirectionsStatus.OK) {
           this.setState({
             directions: result,
           });
+        
+          console.log(this.state);
         } else {
           console.error(`error fetching directions ${result}`);
         }
@@ -33,6 +41,7 @@ const MapWithADirectionsRenderer = compose(
     }
   })
 )(props =>
+
   <GoogleMap
     defaultZoom={7}
     defaultCenter={new google.maps.LatLng(34.0928, 118.3287)}

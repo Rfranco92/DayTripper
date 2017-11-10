@@ -19,5 +19,9 @@ export default {
         startDate: obj.start,
         endDate: obj.end
       });
+  },
+
+  getOneTrip: function(id){
+    return axios.get("/api/trip/" + id)
   }
 };
