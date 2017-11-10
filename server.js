@@ -52,10 +52,11 @@ app.use(passport.session());
 
 const routes = require("./routes");
 app.use(routes);
-app.use(express.static("build"))
+
+app.use("/static", express.static(path.join(__dirname, "./client/build/")));
 // app.use(express.static("client/build", path.join(__dirname, "./client/build")));
-app.get("/", (req, res) => {
-	res.sendFile(path.join(__dirname, 'client/build/'))
+app.get("*", (req, res) => {
+	res.sendFile(path.join(__dirname, './client/build/'))
 });
 
 
