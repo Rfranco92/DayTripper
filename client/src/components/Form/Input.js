@@ -1,5 +1,6 @@
 import "./Input.css";
 import React, { Component } from "react";
+import { Redirect } from 'react-router-dom';
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
 import DropDown from "../DropDown";
@@ -16,6 +17,7 @@ export class Input extends React.Component {
       end: '',
       geocodeResults1: '',
       geocodeResults2: '',
+      redirectTo: null,
       loading: false
     }
     this.handleFormSubmit = this.handleFormSubmit.bind(this)
@@ -72,7 +74,7 @@ export class Input extends React.Component {
         console.log(response)
         if (!response.data.error) {
           this.setState({
-            redirectTo: '/currenttrips'
+            redirectTo: '/trips/' + this.state.name
           })
         } else {
           alert(response.data.error)
@@ -103,6 +105,9 @@ export class Input extends React.Component {
   }
   
   render() {
+    if (this.state.redirectTo) {
+      return <Redirect to={{ pathname: this.state.redirectTo }} />
+    } 
     const AutocompleteItem = ({ formattedSuggestion }) => (
       <div className="Demo__suggestion-item">
         <i className='fa fa-map-marker Demo__suggestion-icon'/>

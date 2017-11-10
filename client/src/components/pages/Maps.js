@@ -1,4 +1,4 @@
-import MapWithADirectionsRenderer from "../Maps/supermap";
+import MapWithADirectionsRenderer from "../Maps/DirectMap";
 import API from "../../utils/API";
 import React, { Component } from "react";
 
@@ -10,13 +10,11 @@ class Maps extends Component{
     startLat: "",
     endLong: "",
     endLat: "",
-    trips: [],
     isTrips: false
   	}
   	}
 
   	 componentDidMount() {
-
    	API.getOneTrip(this.props.match.params._id).then(response => {
           this.setState({ 
           isTrips: true,

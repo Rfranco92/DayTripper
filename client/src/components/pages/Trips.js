@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import MapWithADirectionsRenderer from "../Maps/supermap"
 import { Link } from "react-router-dom";
 import API from "../../utils/API";
 import { Col, Row, Container } from "../../components/Grid";
@@ -43,6 +42,12 @@ class MyFancyComponent extends React.PureComponent {
               <br></br> 
               Ends: {trip.endDate}
             </strong>
+            </Link>
+
+            <Link to={"/streetview/" + trip._id}>
+            <button>
+            Streetview
+            </button>
             </Link>
             </ListItem>
 
