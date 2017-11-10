@@ -1,7 +1,7 @@
 import React from "react"
 import { compose, withProps, lifecycle } from "recompose"
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, DirectionsRenderer } from "react-google-maps"
-// import "../../BtnRow";
+import FooterBar from "../../components/FooterBar";
 
 const google = window.google
 
@@ -52,6 +52,7 @@ const MapWithADirectionsRenderer = compose(
     {props.directions && <DirectionsRenderer directions={props.directions} />}
   </GoogleMap>
 
+  <FooterBar />
 
   </container>
 
