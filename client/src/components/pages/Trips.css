@@ -1,0 +1,25 @@
+.black {
+	background-color: black;
+	color: red;
+	opacity: .7;
+	width: 100%;
+}
+
+.empty {
+	color: red;
+	background-color: black;
+	opacity: .7;
+}
+
+
+.blackli {
+	background-color: black;
+	color: red;
+	opacity: .8;
+	width: 100%;
+}	
+
+.col-lg-9 {
+
+
+}
