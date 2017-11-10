@@ -1,25 +1,30 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
+import "./Navpills.css"
 
 const Navpills = props => { 
 	if (props.loggedIn) {
 		return (
 			<ul className="nav nav-tabs">
-				<li className={window.location.pathname ==="/details" ?  "active" : ""}>
-					<Link to ="/details">
-					Details
+				<li className={window.location.pathname ===`/trips/${props.user.local.username}` ?  "active" : ""}>
+					<Link to = {`/trips/${props.user.local.username}`}>
+					Your Trips
 					</Link>
 				</li>
+
+				<li className={window.location.pathname ==="/members" ?  "active" : ""}>
+					<Link to ="/members">
+					List of Members
+					</Link>
+				</li>
+
 				<li className={window.location.pathname ==="/travel" ?  "active" : ""}>
 					<Link to ="/travel">
-					Travel
+					Plan a New Trip
 					</Link>
 				</li>
-				<li className="rightStuff">
-
-				</li>
-				<li className = "rightStuff">
-					<Link to="#" className="nav-link" onClick={props._logout}>
+				<li>
+					<Link to="/" className="nav-link" onClick={props._logout}>
 						Logout
 					</Link>
 				</li>

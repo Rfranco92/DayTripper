@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Redirect } from 'react-router-dom'
+import "./SignUpForm.css"
 
 class SignupForm extends Component {
 	constructor() {
@@ -14,14 +15,30 @@ class SignupForm extends Component {
 		this.handleSubmit = this.handleSubmit.bind(this)
 		this.handleChange = this.handleChange.bind(this)
 	}
+
 	handleChange(event) {
-		this.setState({
-			[event.target.name]: event.target.value
+		
+			 let value = event.target.value;
+    		const name = event.target.name;
+
+    			if (name === "password") {
+      			value = value.substring(0, 15);
+      			}
+      		
+      		this.setState({
+			[name]: value
 		})
 	}
 	handleSubmit(event) {
 		event.preventDefault()
-		// TODO - validate!
+		 if (!this.state.username) {
+      	 alert("Fill out your username");
+    	} else if (this.state.password.length < 6) {
+      	alert(
+        `Choose a more secure password ${this.state.username}`
+      	);
+    	} 
+    	else{
 		axios
 			.post('/auth/signup', {
 				username: this.state.username,
@@ -29,15 +46,15 @@ class SignupForm extends Component {
 			})
 			.then(response => {
 				console.log(response)
-				if (!response.data.errmsg) {
-					console.log('youre good')
+				if (!response.data.error) {
 					this.setState({
-						redirectTo: '/'
+						redirectTo: '/login'
 					})
 				} else {
-					console.log('duplicate')
+					alert(response.data.error)
 				}
 			})
+		 }	
 	}
 	render() {
 		if (this.state.redirectTo) {
@@ -45,7 +62,6 @@ class SignupForm extends Component {
 		}
 		return (
 			<div className="SignupForm">
-				<h1>Signup form</h1>
 				<label htmlFor="username">Username: </label>
 				<input
 					type="text"
