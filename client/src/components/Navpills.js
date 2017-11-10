@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import "./Navpills.css"
 
 const Navpills = props => { 
@@ -9,11 +9,6 @@ const Navpills = props => {
 				<li className={window.location.pathname ===`/trips/${props.user.local.username}` ?  "active" : ""}>
 					<Link to = {`/trips/${props.user.local.username}`}>
 					Your Trips
-					</Link>
-				</li>
-				<li className={window.location.pathname ===`/oldtrips/${props.user.local.username}` ?  "active" : ""}>
-					<Link to ={`/oldtrips/${props.user.local.username}`}>
-					Your Past Trips
 					</Link>
 				</li>
 				<li className={window.location.pathname ==="/travel" ?  "active" : ""}>
