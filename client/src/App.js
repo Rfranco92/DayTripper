@@ -29,13 +29,11 @@ class App extends Component {
   componentDidMount() {
     axios.get('/auth/user').then(response => {
       if (!!response.data.user) {
-        console.log('THERE IS A USER')
         this.setState({
           loggedIn: true,
           user: response.data.user
         })
       } else {
-        console.log('THERE IS NO USER')
         this.setState({
           loggedIn: false,
           user: null
@@ -52,14 +50,14 @@ class App extends Component {
       if (response.status === 200) {
         this.setState({
           loggedIn: false,
-          user: null,
-          redirectTo: '/',
+          user: null
         })
       }
     })
   }
 
   render() {
+
     return (
       <div className="App">
       

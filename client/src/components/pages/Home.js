@@ -1,12 +1,12 @@
 import React from "react";
 import BtnRow from "../../components/BtnRow";
 import { Link, Route } from "react-router-dom";
-import DecoMap from "../Maps/decomap";
+import CoverMap from "../Maps/CoverMap";
 
 const Home = () =>
 <container>
 
-<DecoMap
+<CoverMap
   isMarkerShown
   googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
   loadingElement={<div style={{ height: `100%` }} />}
