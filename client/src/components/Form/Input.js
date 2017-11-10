@@ -151,6 +151,7 @@ export class Input extends React.Component {
           </div>  
 
           <div className="col-lg-3">  
+        
         <PlacesAutocomplete 
             autocompleteItem={AutocompleteItem}
             inputProps={inputEndProps} />
@@ -163,10 +164,12 @@ export class Input extends React.Component {
             placeholder="Ending Date"
             />
         </div>
+
         <button className="pissShit">Submit</button>
-      </form>
+        </form>
          
       </div>
+
     )
   }
 }
