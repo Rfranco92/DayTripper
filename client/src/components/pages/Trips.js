@@ -47,7 +47,7 @@ class MyFancyComponent extends React.PureComponent {
               Ends: {trip.endDate}
             </strong>
             </Link>
-            </div>
+          </div>
 
           ))}
         </ul>
