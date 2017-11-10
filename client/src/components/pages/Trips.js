@@ -57,6 +57,8 @@ class MyFancyComponent extends React.PureComponent {
 
         <h1 className="empty">You do not have any trips available</h1>
         )}
+
+
     </div>
 
 
