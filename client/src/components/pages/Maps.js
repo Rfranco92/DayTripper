@@ -29,7 +29,9 @@ class Maps extends Component{
         .catch(err => console.log(err));
   	}
 
-	render(){
+	render()
+
+    {if(this.state.endLat.length === 0) return null
 		return(
 
 			<MapWithADirectionsRenderer startLat={this.state.startLat} startLong={this.state.startLong} 
