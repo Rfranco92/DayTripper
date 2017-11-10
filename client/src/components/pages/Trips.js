@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import MapWithADirectionsRenderer from "../Maps/supermap"
+import MapWithADirectionsRenderer from "../Maps/supermap";
 import { Link } from "react-router-dom";
 import API from "../../utils/API";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
+import "./Trips.css";
 
 class MyFancyComponent extends React.PureComponent {
   constructor(props) { 
@@ -30,12 +31,13 @@ class MyFancyComponent extends React.PureComponent {
 
   render() {
     return ( 
-      <Container fluid>
+
+      <div className="black">
       {this.state.trips.length ? (
-        <List>
+        <ul className="black">
         {this.state.trips.map(trip => (
-          <ListItem key={trip._id}>
-            <Link to={"/maps/" + trip._id}>
+          <ListItem key={trip._id} className="black" >
+            <Link to={"/maps/" + trip._id} className="black" >
             <strong>
               Trip from {trip.startAdd} to {trip.endAdd} 
               <br></br>
@@ -47,15 +49,15 @@ class MyFancyComponent extends React.PureComponent {
             </ListItem>
 
           ))}
-        </List>
+        </ul>
 
         )
 
       : (
 
-        <h1>You do not have any trips available</h1>
+        <h1 className="empty">You do not have any trips available</h1>
         )}
-    </Container>
+    </div>
 
 
     )
