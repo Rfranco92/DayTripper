@@ -32,12 +32,12 @@ class MyFancyComponent extends React.PureComponent {
   render() {
     return ( 
 
-      <div className="black">
+      <div className="col-lg-9 col-lg-offset-1">
       {this.state.trips.length ? (
         <ul className="black">
         {this.state.trips.map(trip => (
-          <ListItem key={trip._id} className="black" >
-            <Link to={"/maps/" + trip._id} className="black" >
+          <div key={trip._id} className="blackli" >
+            <Link to={"/maps/" + trip._id} className="blackli" >
             <strong>
               Trip from {trip.startAdd} to {trip.endAdd} 
               <br></br>
@@ -46,7 +46,7 @@ class MyFancyComponent extends React.PureComponent {
               Ends: {trip.endDate}
             </strong>
             </Link>
-            </ListItem>
+            </div>
 
           ))}
         </ul>

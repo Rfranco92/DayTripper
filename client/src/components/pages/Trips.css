@@ -1,12 +1,20 @@
 .black {
 	background-color: black;
 	color: red;
-	opacity: 0.7;
+	opacity: .7;
 	width: 100%;
 }
 
 .empty {
 	color: red;
 	background-color: black;
-	opacity: 0.7;
+	opacity: 0;
 }
+
+
+.blackli {
+	background-color: black;
+	color: red;
+	opacity: .8;
+	width: 100%;
+}	
