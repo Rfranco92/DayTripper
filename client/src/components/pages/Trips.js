@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import MapWithADirectionsRenderer from "../Maps/supermap";
 import { Link } from "react-router-dom";
 import API from "../../utils/API";
-import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import "./Trips.css";
+import FooterBar from "../../components/FooterBar"
 
 class MyFancyComponent extends React.PureComponent {
   constructor(props) { 
@@ -31,6 +31,7 @@ class MyFancyComponent extends React.PureComponent {
 
   render() {
     return ( 
+<container>      
 
       <div className="col-lg-9 col-lg-offset-1">
       {this.state.trips.length ? (
@@ -58,9 +59,15 @@ class MyFancyComponent extends React.PureComponent {
         <h1 className="empty">You do not have any trips available</h1>
         )}
 
+  
+
 
     </div>
 
+<FooterBar>      
+</FooterBar>
+
+</container>
 
     )
   }
