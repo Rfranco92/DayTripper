@@ -8,6 +8,7 @@ import Travel from "./components/pages/Travel";
 import Details from "./components/pages/Details";
 import Trips from "./components/pages/Trips";
 import Home from "./components/pages/Home";
+import Members from "./components/pages/Members";
 import Maps from "./components/pages/Maps";
 import Streetview from "./components/pages/Streetview";
 import Header from "./components/login/header";
@@ -74,14 +75,12 @@ class App extends Component {
         </div>
         </header>
 
-
-
-
         <Router>
           <div>
             <Navpills user={this.state.user}  _logout={this._logout} loggedIn={this.state.loggedIn} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/" component={Home} />
+            <Route exact path="/members" component={Members} />
             <Route exact path="/create" component={Create} />
             <Route path="/trips/:username" component={Trips} />
             <Route path="/maps/:_id" component={Maps} />

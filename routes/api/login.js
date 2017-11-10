@@ -15,6 +15,18 @@ router.get('/user', (req, res, next) => {
 	}
 })
 
+router.get(
+	'/members',
+	function(req, res, next) {
+	console.log('===== user!!======')
+	console.log(req.user)
+	if (req.user) {
+		return res.json({ user: req.user })
+	} else {
+		return res.json({ user: null })
+	}
+})
+
 router.post(
 	'/login',
 	function(req, res, next) {

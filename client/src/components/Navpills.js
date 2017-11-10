@@ -11,6 +11,13 @@ const Navpills = props => {
 					Your Trips
 					</Link>
 				</li>
+
+				<li className={window.location.pathname ==="/members" ?  "active" : ""}>
+					<Link to ="/members">
+					List of Members
+					</Link>
+				</li>
+
 				<li className={window.location.pathname ==="/travel" ?  "active" : ""}>
 					<Link to ="/travel">
 					Plan a New Trip

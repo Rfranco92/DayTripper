@@ -2,7 +2,7 @@
 const express = require('express')
 const router = express.Router()
 const trips = require('../../models/trip')
-
+const User = require('../../models/users')
 
 
 router.post("/createtrip", function (req, res){
@@ -13,6 +13,16 @@ router.post("/createtrip", function (req, res){
 		})
 })
 
+
+router.get(
+  '/members',
+  function(req, res) {
+  User.find({})
+  .then(function(userdata){
+  console.log(req.user)
+  res.json(userdata)  
+  })
+})
 
 
 router.get("/trips/:owner", function(req, res){

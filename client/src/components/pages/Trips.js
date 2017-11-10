@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import MapWithADirectionsRenderer from "../Maps/DirectMap";
 import { Link } from "react-router-dom";
 import API from "../../utils/API";
 import { List, ListItem } from "../../components/List";
@@ -10,7 +9,6 @@ class MyFancyComponent extends React.PureComponent {
   constructor(props) { 
   super(props);
   this.state = {
-    name: "",
     trips: [],
     isTrips: false
   }
@@ -38,6 +36,7 @@ class MyFancyComponent extends React.PureComponent {
         <ul className="black">
         {this.state.trips.map(trip => (
           <div key={trip._id} className="blackli" >
+
             <Link to={"/maps/" + trip._id} className="blackli" >
             <p>
               Trip from {trip.startAdd} to {trip.endAdd} 
@@ -52,7 +51,6 @@ class MyFancyComponent extends React.PureComponent {
             Streetview
             </button>
             </Link> 
-
           </div>
 
 

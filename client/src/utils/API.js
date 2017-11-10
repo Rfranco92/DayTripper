@@ -23,5 +23,9 @@ export default {
 
   getOneTrip: function(id){
     return axios.get("/api/trip/" + id)
+  },
+
+  getMembers: function(){
+    return axios.get("/api/members")
   }
 };
