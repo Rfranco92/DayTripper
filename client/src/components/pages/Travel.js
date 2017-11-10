@@ -11,7 +11,9 @@ const Travel = props =>{
 console.log(props.user)
 return(
   <div>
-    <h1 className="assHole">Plan Your Location</h1>
+  	<div className="backer">
+    	<h1 className="assHole">Plan Your Trip</h1>
+    </div>
     <Input user={props.user}>
 
     </Input>

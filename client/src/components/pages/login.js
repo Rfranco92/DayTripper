@@ -4,6 +4,7 @@ import axios from 'axios';
 import FooterBar from "../../components/FooterBar";
 import "./login.css";
 
+
 class Login extends Component  {
 
 	constructor() {
@@ -36,7 +37,9 @@ class Login extends Component  {
 	render() {
 		return( 
             <div>
-                <h1 className="vomit">Please log in using your username and password</h1>
+            	<div className="backerlog">
+                	<h1 className="vomit">Please log in using your username and password</h1>
+                </div>	
                     <LoginForm _login={this._login}/>
                 <FooterBar>
                 </FooterBar>	
