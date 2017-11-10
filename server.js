@@ -57,7 +57,7 @@ app.use(routes);
 app.use("/static", express.static(path.join(__dirname, "./client/build/")));
 
 app.get("/", (req, res) => {
-	res.sendFile(path.join(__dirname, './client/build/'))
+	res.sendFile(path.join(__dirname, './client/build/index.html'))
 });
 
 
