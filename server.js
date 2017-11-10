@@ -53,7 +53,7 @@ app.use(passport.session());
 const routes = require("./routes");
 app.use(routes);
 
-router.use(function(req, res) {
+app.use(function(req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
