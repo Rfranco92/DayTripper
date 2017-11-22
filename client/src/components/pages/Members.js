@@ -26,20 +26,22 @@ class MyFancyComponent extends React.PureComponent {
 
   render() {
     return ( 
-      <Container fluid>
+
+      <div className="col-lg-9 col-lg-offset-1">
       {this.state.members.length ? (
-        <List>
+       <ul className="black">
+
         {this.state.members.map(member => (
-          <ListItem key={member._id}>
-            <Link to={"/trips/" + member.local.username}>
+          <div key={member._id} className="blackli" >
+            <Link to={"/trips/" + member.local.username} className="blackli">
             <strong>
           {member.local.username}
             </strong>
             </Link>
-            </ListItem>
 
+        </div>
           ))}
-        </List>
+        </ul>
 
         )
 
@@ -47,7 +49,7 @@ class MyFancyComponent extends React.PureComponent {
 
         <h1>There Are No Members Yet!</h1>
         )}
-    </Container>
+    </div>
 
 
     )
