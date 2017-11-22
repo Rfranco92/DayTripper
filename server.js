@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const morgan = require('morgan');
+const path = require("path");
 const session = require('express-session');
 const passport = require('./passport')
 const MongoStore = require('connect-mongo')(session)
@@ -14,7 +15,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Serve up static assets
-app.use(express.static("client/build"));
 // Add routes, both API and view
 
 // Set up promises with mongoose
@@ -53,11 +53,15 @@ app.use(passport.session());
 const routes = require("./routes");
 app.use(routes);
 
+app.use(express.static(path.join(__dirname, "./client/build/")));
+// app.use(express.static("client/build", path.join(__dirname, "./client/build")));
+app.get("*", (req, res) => {
+	res.sendFile(path.join(__dirname, './client/build/'))
+});
 
-
-
+console.log("Hello");
 
 // Start the API server
-app.listen(PORT, function() {
+app.listen(PORT, function() {	
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 });
