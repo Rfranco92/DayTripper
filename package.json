@@ -19,7 +19,7 @@
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^3.5.0",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.20"
   },
   "homepage": "https://github.com/Rfranco92/DayTripper#readme",
   "dependencies": {
